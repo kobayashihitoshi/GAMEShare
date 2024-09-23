@@ -1,0 +1,7 @@
+ja:
+  devise:
+    failure:
+      invalid: "メールアドレスまたはパスワードが間違っています。"
+    errors:
+      messages:
+        not_found: "見つかりませんでした。"

@@ -1,0 +1,15 @@
+<div class="container text-center p-4">
+    <div class="row">
+        <div class="mx-auto">
+            <h1><i class="fa-brands fa-phoenix-framework"></i>GAMEShareへようこそ！</h1>
+            <p class="fs-3">GAMEShareはゲーム好きが集まるコミュニティだよ！</p>
+            <p class="fs-3">自分の好きなゲームのコミュニティでみんなと一緒に楽しく会話しよう！</p>
+            <button>
+                <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-dark'%>
+                <%= link_to "ログイン", new_user_session_path, class: 'btn btn-dark'%>
+                <%= link_to "ゲストログイン", users_guest_sign_in_path, class: 'btn btn-dark'%>
+            </button>
+        </div>
+    </div>
+</div>
+

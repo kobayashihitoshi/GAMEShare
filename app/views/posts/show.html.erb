@@ -1,0 +1,25 @@
+<div class="container p-3">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>投稿詳細</h1>
+      <p>
+        <%= link_to post_path(@post.user) do %>
+          <%= @post.body %>
+        <% end %>
+      </p>
+      <% if @post.image.attached? %>
+        <p>画像:</p>
+        <%= image_tag @post.image %>
+      <% end %>
+      <% if @post.video.attached? %>
+        <p>動画:</p>
+        <%= video_tag @post.video, controls: true %>
+      <% end %>
+      
+      <% if @post.user == current_user %>
+        <p><%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-sm btn-success' %></p>
+        <p><%= link_to 'Destroy', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="container p-4">
+  <div>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <h5><%= @user.name %>：マイページ</h5>
+        <%= link_to 'ユーザー編集', edit_user_path(@user.id), class: 'btn btn-primary' %>
+      <h5 class="pt-3">新規投稿</h5>
+      <%= form_with model: @post do |f| %>
+        <div class="field">
+          <%= f.text_area :body %><br />
+          <%= f.file_field :image %><br />
+          <%= f.file_field :video %>
+        </div>
+        <div class="field p-1">
+          <%= f.submit '投稿' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <h5 class="p-3">投稿一覧</h5>
+      <table class="table table-hover table-user-show">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <a href= '/posts/<%= post.id %>'>
+                <%= post.body %>
+              </a>
+            </td>
+            <td>
+              <% if post.image.attached? %>
+                <%= image_tag post.image %>
+              <% end %>
+            </td>
+            <td>
+              <% if post.video.attacched? %>
+                <%= video_tag post.video %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
